@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NexusBackEndAPI.Entities
+namespace NexusBackEndAPI
 {
     public class Teacher
     {
+
         public string TeacherId { get; set; }
 
         [Required]
@@ -15,7 +16,7 @@ namespace NexusBackEndAPI.Entities
         public DateTime Dateofbirth { get; set; }
         public string Gender { get; set; }
 
-        public int TeacherPhoneno { get; set; }
+        public string TeacherPhoneno { get; set; }
         [Required]
         public string TeacherEmail { get; set; }
 

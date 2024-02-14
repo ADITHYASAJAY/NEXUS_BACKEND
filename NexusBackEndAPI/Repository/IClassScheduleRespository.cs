@@ -1,4 +1,5 @@
-﻿namespace NexusBackEndAPI.Repository
+﻿
+namespace NexusBackEndAPI
 {
     public interface IClassScheduleRespository<T> where T : class
     {
@@ -9,5 +10,6 @@
         void AssignTeacher(T t);
         void DeleteClassSchedule(string Id);
         List<T> GetAllSchedules();
+
     }
 }

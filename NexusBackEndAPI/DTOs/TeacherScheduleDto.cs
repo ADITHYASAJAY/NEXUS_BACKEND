@@ -1,4 +1,4 @@
-﻿namespace NexusBackEndAPI.DTOs
+﻿namespace NexusBackEndAPI
 {
     public class TeacherScheduleDto
     {

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "muPd/HZbu1XliRD0ACcuwCcGtmYwc6fIszn5ZFaCRFs=",
+  "Source": "NexusBackEndAPI",
+  "BasePath": "_content/NexusBackEndAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

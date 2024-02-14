@@ -1,5 +1,7 @@
-﻿namespace NexusBackEndAPI.Entities
-{
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NexusBackEndAPI 
+{ 
     public class Subject
     {
         public string SubjectId { get; set; }

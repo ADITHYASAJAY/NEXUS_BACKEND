@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using NexusBackEndAPI.DTOs;
-using NexusBackEndAPI.Entities;
 
-namespace NexusBackEndAPI.Profiles
+
+namespace NexusBackEndAPI
 {
     public class ClassScheduleProfile:Profile
     {

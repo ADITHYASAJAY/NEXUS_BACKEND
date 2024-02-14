@@ -1,12 +1,13 @@
-﻿using NexusBackEndAPI.Entities;
+﻿
+using Microsoft.EntityFrameworkCore;
 
-namespace NexusBackEndAPI.Repository
+namespace NexusBackEndAPI
 {
-    public class ClassScheduleRepository: IClassScheduleRespository<ClassSchedule>
+    public class ClassScheduleRepository : IClassScheduleRespository<ClassSchedule>
     {
         private readonly ContextClass _contextClass;
 
-        public ClassScheduleRepository(ContextClass contextClass)
+        public ClassScheduleRepository(ContextClass contextClass) 
         {
             this._contextClass = contextClass;
         }
@@ -16,14 +17,14 @@ namespace NexusBackEndAPI.Repository
             try
             {
                 var v = _contextClass.ClassSchedules.Find(t.ClassScheduleId);
-                if (v != null)
+                if (v != null) 
                 {
                     v.TeacherId = t.TeacherId;
                     _contextClass.ClassSchedules.Update(v);
                     _contextClass.SaveChanges();
 
                 }
-                else
+                else 
                 {
                     throw new Exception("Cannot assign teacher");
                 }
@@ -40,10 +41,10 @@ namespace NexusBackEndAPI.Repository
             try
             {
                 var classschedule = _contextClass.ClassSchedules.Find(Id);
-                if (classschedule != null)
+                if (classschedule != null) 
                 {
                     _contextClass.ClassSchedules.Remove(classschedule);
-                    _contextClass.SaveChanges();
+                    _contextClass.SaveChanges ();
                 }
             }
             catch (Exception)
@@ -59,11 +60,11 @@ namespace NexusBackEndAPI.Repository
             try
             {
                 var classscheduleofClass = _contextClass.ClassSchedules.Where(x => x.ClassId.Equals(id)).ToList();
-                if (classscheduleofClass != null)
+                if (classscheduleofClass != null) 
                 {
                     return classscheduleofClass;
                 }
-                else
+                else 
                 {
                     throw new Exception("no schedule present");
                 }
@@ -81,11 +82,11 @@ namespace NexusBackEndAPI.Repository
             try
             {
                 var classcheduleofClass = _contextClass.ClassSchedules.Where(x => x.TeacherId.Equals(id)).ToList();
-                if (classcheduleofClass != null)
+                if (classcheduleofClass != null) 
                 {
-                    return classcheduleofClass;
+                    return classcheduleofClass; 
                 }
-                else
+                else 
                 {
                     throw new Exception("no schedule present");
                 }
@@ -115,17 +116,18 @@ namespace NexusBackEndAPI.Repository
 
             try
             {
-                var v = _contextClass.ClassSchedules.FirstOrDefault(x => x.ClassId == t.ClassId && x.TimeSlot == t.TimeSlot && x.TeacherId == t.TeacherId);
-                if (v != null)
-                {
-                    throw new Exception("Cannot assign teacher. Already assigned!!");
-                }
-                else
+                var v = _contextClass.ClassSchedules.FirstOrDefault(x=>(x.TimeSlot == t.TimeSlot && x.TeacherId == t.TeacherId));
+                if (v==null) 
                 {
                     _contextClass.ClassSchedules.Add(t);
                     _contextClass.SaveChanges();
                 }
-
+                else 
+                {
+                    throw new Exception("Cannot assign teacher. Already assigned!!");
+                    
+                }
+                
             }
             catch (Exception ex)
             {
@@ -133,18 +135,18 @@ namespace NexusBackEndAPI.Repository
                 throw new Exception(ex.Message);
             }
         }
-
+        
         public void UpdateSchedule(ClassSchedule t)
         {
             try
             {
                 var updateschedule = _contextClass.ClassSchedules.FirstOrDefault(x => x.ClassScheduleId.Equals(t.ClassScheduleId));
-                if (updateschedule != null)
+                if (updateschedule != null) 
                 {
                     _contextClass.ClassSchedules.Update(updateschedule);
                     _contextClass.SaveChanges();
                 }
-                else
+                else 
                 {
                     throw new Exception("No records to update");
                 }
@@ -155,5 +157,37 @@ namespace NexusBackEndAPI.Repository
                 throw;
             }
         }
+
+        public List<Class> GetAllClass() 
+        {
+
+            try
+            {
+                var classes = _contextClass.Classes.ToList();
+                return classes;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Subject> AllSubjects() 
+        {
+            try
+            {
+                var subjects=_contextClass.Subjects.ToList();
+                return subjects;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        
     }
 }

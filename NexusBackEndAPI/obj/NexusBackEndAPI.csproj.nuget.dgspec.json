@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\07adi\\Desktop\\nexus\\NexusBackEndAPI\\NexusBackEndAPI.csproj": {}
+    "C:\\Users\\asandhya\\Desktop\\Adithya\\Backend\\NEXUS_BACKEND\\NexusBackEndAPI\\NexusBackEndAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\07adi\\Desktop\\nexus\\NexusBackEndAPI\\NexusBackEndAPI.csproj": {
+    "C:\\Users\\asandhya\\Desktop\\Adithya\\Backend\\NEXUS_BACKEND\\NexusBackEndAPI\\NexusBackEndAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\07adi\\Desktop\\nexus\\NexusBackEndAPI\\NexusBackEndAPI.csproj",
+        "projectUniqueName": "C:\\Users\\asandhya\\Desktop\\Adithya\\Backend\\NEXUS_BACKEND\\NexusBackEndAPI\\NexusBackEndAPI.csproj",
         "projectName": "NexusBackEndAPI",
-        "projectPath": "C:\\Users\\07adi\\Desktop\\nexus\\NexusBackEndAPI\\NexusBackEndAPI.csproj",
-        "packagesPath": "C:\\Users\\07adi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\07adi\\Desktop\\nexus\\NexusBackEndAPI\\obj\\",
+        "projectPath": "C:\\Users\\asandhya\\Desktop\\Adithya\\Backend\\NEXUS_BACKEND\\NexusBackEndAPI\\NexusBackEndAPI.csproj",
+        "packagesPath": "C:\\Users\\asandhya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\asandhya\\Desktop\\Adithya\\Backend\\NEXUS_BACKEND\\NexusBackEndAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\07adi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\asandhya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,11 +44,17 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.1, )"
             },
@@ -76,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

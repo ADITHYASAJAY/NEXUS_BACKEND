@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NexusBackEndAPI.DTOs;
-using NexusBackEndAPI.Entities;
-using NexusBackEndAPI.Repository;
 
-namespace NexusBackEndAPI.Controllers
+namespace NexusBackEndAPI
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,23 +18,23 @@ namespace NexusBackEndAPI.Controllers
             _repository = repository;
         }
 
-        [HttpGet, Route("GetTeacherSchedule/{teacherId}")]
-        public IActionResult GetTeacherScheDule(string teacherId)
+        [HttpGet,Route("GetTeacherSchedule/{teacherId}")]
+        public IActionResult GetTeacherScheDule(string teacherId) 
         {
             try
             {
                 var teacherSchedule = _repository.DisplayClassScheduleBYTeacher(teacherId);
-
+               
                 if (teacherSchedule != null)
                 {
                     List<ClassTeacherScheduleDto> teacherSchedules = [];
-                    foreach (var v in teacherSchedule)
+                    foreach (var v in teacherSchedule) 
                     {
                         var s = _mapper.Map<ClassTeacherScheduleDto>(v);
                         teacherSchedules.Add(s);
                     }
                     return Ok(teacherSchedules);
-
+                   
                 }
                 else { return BadRequest(); }
 
@@ -47,7 +44,7 @@ namespace NexusBackEndAPI.Controllers
 
                 throw;
             }
-
+            
         }
 
         [HttpGet, Route("GetClassSchedule/{classId}")]
@@ -68,7 +65,7 @@ namespace NexusBackEndAPI.Controllers
 
                 }
                 else { return BadRequest(); }
-
+                
 
             }
             catch (Exception)
@@ -78,12 +75,12 @@ namespace NexusBackEndAPI.Controllers
             }
         }
 
-        [HttpPost, Route("AddClassSchedule")]
-        public IActionResult AddClassSchedule(ClassSchedule schedule)
+        [HttpPost,Route("AddClassSchedule")]
+        public IActionResult AddClassSchedule(ClassSchedule schedule) 
         {
             try
             {
-
+              
                 _repository.ScheduleClass(schedule);
                 return Ok(schedule);
 
@@ -91,12 +88,12 @@ namespace NexusBackEndAPI.Controllers
             catch (Exception ex)
             {
 
-                throw new Exception(ex.Message);
+                throw new Exception (ex.Message);
             }
         }
 
-        [HttpPut, Route("AssignTeachers")]
-        public IActionResult AssignTeacher(TeacherScheduleDto teacherSchedule)
+        [HttpPut,Route("AssignTeachers")]
+        public IActionResult AssignTeacher(TeacherScheduleDto teacherSchedule) 
         {
             try
             {
@@ -111,11 +108,11 @@ namespace NexusBackEndAPI.Controllers
 
                 throw new Exception(ex.Message);
             }
-
+        
         }
 
-        [HttpGet, Route("GetAllSchedule")]
-        public IActionResult GetAll()
+        [HttpGet,Route("GetAllSchedule")]
+        public IActionResult GetAll() 
         {
             try
             {
@@ -129,20 +126,53 @@ namespace NexusBackEndAPI.Controllers
                 throw;
             }
         }
-        [HttpDelete, Route("Delete/{classScheduleId}")]
-        public IActionResult Delete(string classScheduleId)
+        [HttpDelete,Route("Delete/{classScheduleId}")]
+        public IActionResult Delete(string classScheduleId) 
         {
-            try
+            try 
             {
                 _repository.DeleteClassSchedule(classScheduleId);
                 return Ok("Deleted Successfully");
-
+            
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message);    
             }
-
+        
         }
+        [HttpGet,Route("GetAllClass")]
+        public IActionResult AllClass() 
+        {
+            try
+            {
+                var result = _repository.GetAllClass();
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpGet,Route("GetAllSubjects")]
+
+        public IActionResult AllSubjects() 
+        {
+            try
+            {
+                var subjects=_repository.AllSubjects();
+                return Ok(subjects);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+       
+
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace NexusBackEndAPI.DTOs
-{
+﻿namespace NexusBackEndAPI 
+{ 
     public class ClassTeacherScheduleDto
     {
-        public string SubjectId { get; set; }
-        public string TeacherId { get; set; }
-        public int TimeSlot { get; set; }
+        public string? ClassId { get; set; }
+        public int TimeSlot {  get; set; }  
     }
 }
